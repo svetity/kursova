@@ -1,0 +1,34 @@
+
+
+> file.data
+net="10.7.180."
+
+priv="old.txt"
+
+[ -s $priv ] || for (( i=0; i<255; i++ )); do echo 2; done >> $priv
+
+state=( $($oldstate) )
+
+for i in {100..105}
+do
+ip="$net$i"
+ping -c1 $ip $>>/dev/null
+res=$?
+
+if [ res -ne ${state[$i]} ]
+then
+echo "$ip $res"
+state[$i]=$res
+fi
+done
+echo ${state[@]} > $priv
+
+[ -s $res ] && cat $res -s “IP changes” root
+
+
+for i in {0..254}; do echo ${old[$i]};
+done >> $priv
+
+
+
+
