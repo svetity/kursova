@@ -1,5 +1,6 @@
 
 
+
 > file.data
 net="10.7.180."
 
@@ -26,7 +27,7 @@ echo ${state[@]} > $priv
 [ -s $res ] && cat $res -s “IP changes” root
 
 
-for i in {0..254}; do echo ${old[$i]};
+for i in {0..254}; do echo ${oldstate[$i]};
 done >> $priv
 
 
